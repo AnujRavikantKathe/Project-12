@@ -80,13 +80,11 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            const storedEmail = localStorage.getItem('userEmail'); // recalling stored data
-            const storedPassword = localStorage.getItem('userPassword'); // recalling stored data
-
-
+            const storedEmail = localStorage.getItem('userEmail'); 
+            const storedPassword = localStorage.getItem('userPassword'); 
             const errorMessage = document.getElementById('error-message');
-            if (email === storedEmail && password === storedPassword) { // checking if data is correct
-                window.location.href = "frontpage.html"; // Redirect to home page
+            if (email === storedEmail && password === storedPassword) { 
+                window.location.href = "frontpage.html"; 
             } else {
                 errorMessage.textContent = "Invalid email or password. Please try again.";
             }

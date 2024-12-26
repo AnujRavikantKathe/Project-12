@@ -126,23 +126,23 @@
         }
 
         .buy-now-container {
-            display: flex; /* Use flexbox */
-            justify-content: center; /* Center horizontally */
-            margin-top: 1rem; /* Add some space above the button */
+            display: flex; 
+            justify-content: center; 
+            margin-top: 1rem; 
         }
 
         .buy-now-button {
-            padding: 1rem 2rem; /* Increased padding for a larger button */
-            background-color: #ff7e5f; /* Background color */
-            color: white; /* Text color */
-            border: none; /* No border */
-            border-radius: 5px; /* Rounded corners */
-            font-size: 1rem; /* Increased font size */
-            font-weight: bold; /* Bold text */
+            padding: 1rem 2rem; 
+            background-color: #ff7e5f;
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 1rem;
+            font-weight: bold; 
  }
 
         .buy-now-button:hover {
-            background-color: #feb47b; /* Change background color on hover */
+            background-color: #feb47b; 
         }
     </style>
     
@@ -200,34 +200,32 @@
         <p>&copy; 2024 RAULPH LAUREN. All rights reserved.</p>
     </footer>
     <script>
-        // Retrieve name and email from localStorage
+        
         const name = localStorage.getItem('userName');
         const email = localStorage.getItem('userEmail');
     
-        // Display name and email on the page
         document.getElementById('displayName').textContent = name ? name : 'Not provided';
         document.getElementById('displayEmail').textContent = email ? email : 'Not provided';
     
-        // Retrieve total amount from localStorage and display it
         const totalAmount = localStorage.getItem('totalAmount');
         document.getElementById('total-amount').textContent = totalAmount ? `$${totalAmount}` : '0.00';
     
         function placeOrder() {
-            // Get values from the input fields
+        
             const mobileNumber = document.getElementById('mnumber').value;
             const address = document.getElementById('address').value;
             const paymentMethod = document.querySelector('input[name="payment"]:checked');
     
-            // Check if all required fields are filled
+         
             if (!mobileNumber || !address || !paymentMethod) {
                 alert('Please fill in all required fields: Mobile Number, Address, and select a Payment Method.');
-                return; // Stop the function if validation fails
+                return;
             }
     
-            // If all fields are filled, proceed with placing the order
+            
             alert('Your order has been placed successfully!');
-            localStorage.removeItem('cart'); // Clear the cart from local storage
-            localStorage.removeItem('totalAmount'); // Clear the total amount from local storage
+            localStorage.removeItem('cart'); 
+            localStorage.removeItem('totalAmount'); 
             window.location.href = "frontpage.html";
         }
     </script>

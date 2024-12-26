@@ -126,42 +126,41 @@
         }
 
         .buy-now-container {
-            display: flex; /* Use flexbox */
-            justify-content: center; /* Center horizontally */
-            margin-top: 1rem; /* Add some space above the button */
+            display: flex;
+            justify-content: center; 
+            margin-top: 1rem; 
         }
 
         .buy-now-button {
-            padding: 1rem 2rem; /* Increased padding for a larger button */
-            background-color: #ff7e5f; /* Background color */
-            color: white; /* Text color */
-            border: none; /* No border */
-            border-radius: 5px; /* Rounded corners */
-            font-size: 1rem; /* Increased font size */
-            font-weight: bold; /* Bold text */
+            padding: 1rem 2rem; 
+            background-color: #ff7e5f; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 1rem; 
+            font-weight: bold; 
         }
 
         .buy-now-button:hover {
-            background-color: #feb47b; /* Change background color on hover */
+            background-color: #feb47b; 
         }
     </style>
     <script>
-        // Added new script
+      
         function loadCart() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart from local storage
+            const cart = JSON.parse(localStorage.getItem('cart')) || []; 
             const cartContent = document.getElementById('cart-content');
-            cartContent.innerHTML = ''; // Clear previous content
+            cartContent.innerHTML = ''; 
 
-            let total = 0; // Initialize total price
+            let total = 0; 
 
             if (cart.length === 0) {
-                cartContent.innerHTML = '<p>Your cart is empty.</p>'; // Display message if cart is empty
+                cartContent.innerHTML = '<p>Your cart is empty.</p>'; 
             } else {
                 cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity; // Calculate total for this item
-                    total += itemTotal; // Add to overall total
-
-                    // Create cart item element
+                    const itemTotal = item.price * item.quantity; 
+                    total += itemTotal; 
+                   
                     const cartItem = document.createElement('div');
                     cartItem.className = 'cart-item';
                     cartItem.innerHTML = `
@@ -178,20 +177,20 @@
                             <button onclick="removeItem('${item.name}')">Remove</button>
                         </div>
                     `;
-                    cartContent.appendChild(cartItem); // Append the cart item to the cart content
+                    cartContent.appendChild(cartItem); 
                 });
             }
 
-            document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`; // Update total display
+            document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
         }
 
         function increaseQuantity(productName) {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const item = cart.find(item => item.name === productName);
             if (item) {
-                item.quantity += 1; // Increase quantity
-                localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
-                loadCart(); // Reload cart
+                item.quantity += 1; 
+                localStorage.setItem('cart', JSON.stringify(cart)); 
+                loadCart(); 
             }
         }
 
@@ -199,17 +198,16 @@
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const item = cart.find(item => item.name === productName);
             if (item && item.quantity > 1) {
-                item.quantity -= 1; // Decrease quantity
-                localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
-                loadCart(); // Reload cart
+                item.quantity -= 1; 
+                localStorage.setItem('cart', JSON.stringify(cart)); 
+                loadCart(); 
             }
         }
 
         function removeItem(productName) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart = cart.filter(item => item.name !== productName); // Remove item from cart
-            localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
-            loadCart(); // Reload cart
+            cart = cart.filter(item => item.name !== productName); 
+            localStorage.setItem('cart', JSON.stringify(cart)); 
         }
 
         function buyNow() {
@@ -217,13 +215,13 @@
             if (cart.length === 0) {
                 alert('Please add items to your cart before purchasing.');
             } else {
-                const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0); // Calculate total amount
-                localStorage.setItem('totalAmount', total.toFixed(2)); // Save total amount in local storage
-                window.location.href = 'buynow.html'; // Redirect to buynow.html
+                const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0); 
+                localStorage.setItem('totalAmount', total.toFixed(2));
+                window.location.href = 'buynow.html'; 
             }
         }
 
-        window.onload = loadCart; // Load cart items when the page loads
+        window.onload = loadCart; 
     </script>
 </head>
 <body>
@@ -245,13 +243,13 @@
     </section>
 
     <section class="cart-content" id="cart-content">
-        <!-- Removed data from here -->
+ 
     </section>
     
     <div class="cart-total" id="cart-total">
         Total: $0.00
     </div>
-    <div class="buy-now-container"><!-- Added new button -->
+    <div class="buy-now-container">
         <button id="buy-now" class="buy-now-button" onclick="buyNow()">Buy Now</button>
     </div> 
     <footer>

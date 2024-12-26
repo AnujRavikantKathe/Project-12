@@ -93,8 +93,8 @@
     <div class="container">
         <div class="sign-in-form">
             <h2>Sign In</h2>
-            <form id= "signinform" action="/submit" method="POST"> <!--Added id="signinform"-->
-                <div class="input-group">  <!--Added Name label-->
+            <form id= "signinform" action="/submit" method="POST"> 
+                <div class="input-group">  
                     <label for="name">Name</label>
                     <input type="name" id="name" name="name" required>
                 </div>
@@ -115,7 +115,7 @@
             </form>
         </div>
     </div>
-    <script> <!-- Added script for saving data -->
+    <script> 
          document.getElementById('signinform').addEventListener('submit', function(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
