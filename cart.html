@@ -208,7 +208,7 @@
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart = cart.filter(item => item.name !== productName); 
             localStorage.setItem('cart', JSON.stringify(cart));
-            loadCart();
+            window.location.reload();
              
         }
 
