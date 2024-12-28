@@ -79,16 +79,21 @@
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
-            const storedEmail = localStorage.getItem('userEmail'); 
-            const storedPassword = localStorage.getItem('userPassword'); 
             const errorMessage = document.getElementById('error-message');
-            if (email === storedEmail && password === storedPassword) { 
+
+            // Retrieve existing users from localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Check if the email and password match any user
+            const user = users.find(user => user.email === email && user.password === password);
+
+            if (user) {
+                // Successful login
                 window.location.href = "frontpage.html"; 
             } else {
+                // Invalid credentials
                 errorMessage.textContent = "Invalid email or password. Please try again.";
             }
-            
         }
     </script>
 </head>
